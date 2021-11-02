@@ -109,6 +109,7 @@ img {
   letter-spacing: 0.06em;
   background-color: var(--accent-color);
   border-radius: 4px;
+  border: 1px solid var(--accent-color);
   padding: 10px 32px 10px 32px;
   margin-top: 30px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
@@ -127,6 +128,8 @@ img {
   border-bottom: 1px solid #ececec;
   padding-top: 24px;
   padding-bottom: 25px;
+  z-index: 3;
+  width: 100%;
 }
 .menu-list {
   display: flex;
@@ -158,10 +161,22 @@ img {
   color: var(--primary-text-color);
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 .menu-link:hover,
 .menu-link:focus {
   color: var(--accent-color);
+}
+.menu-link.current::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  bottom: -32px;
+  cursor: default;
 }
 .header-tel {
   font-weight: 500;
@@ -354,7 +369,29 @@ img {
 .social-link:focus .social-icon {
   fill: #ffffff;
 }
-
+.desc-title-img {
+  background-color: rgba(47, 48, 58, 0.8);
+  position: relative;
+}
+.desc-text-img {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: rgba(47, 48, 58, 0.8);
+  color: #ffffff;
+  bottom: 0;
+  left: 0;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* --------------------CLIENTS-------------------- */
 .clients-title {
   font-family: Roboto;
@@ -564,6 +601,7 @@ img {
   margin-right: 30px;
   margin-bottom: 30px;
 }
+
 .portfolio-frame {
   padding: 20px 24px;
   background: #ffffff;
@@ -607,15 +645,16 @@ img {
 .backdrop {
   width: 100vw;
   height: 100vh;
-  background: #363030;
+  background: rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
-  transition: opacity 500ms linear, visibility 500ms linear;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal {
   position: absolute;
-  width: 500px;
-  min-height: 600px;
+  width: 528px;
+  height: 581px;
   background-color: #ffffff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -625,7 +664,7 @@ img {
   transform: translate(-50%, -50%);
 }
 .modal-btn {
-  border: 1px solid #999999;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: transparent;
   width: 30px;
   height: 30px;
